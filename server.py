@@ -1798,4 +1798,7 @@ def mark_notification_read(notification_id):
     return jsonify({"message": "Marked as read"})
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5000)
+    # Render assigns a port dynamically via an environment variable
+    port = int(os.environ.get("PORT", 5000))
+    # '0.0.0.0' tells Flask to listen on all available network interfaces
+    app.run(host='0.0.0.0', port=port)
